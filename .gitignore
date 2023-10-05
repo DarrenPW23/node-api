@@ -42,6 +42,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Any lock files
+*-lock.*
+
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
@@ -78,6 +81,9 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+
+# testing rest files
+.rest
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

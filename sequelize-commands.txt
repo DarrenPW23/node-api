@@ -1,0 +1,3 @@
+sequelize db:create
+sequelize model:generate --name user --attributes firstName:string,lastName:string,dob:dateonly,email:string,username:string,password:string
+sequelize db:migrate
