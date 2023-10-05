@@ -12,26 +12,22 @@ app.use(passport.session());
 passport.use(new LocalStrategy(
     async (username, password, done) => {
         /* add your custom implementation here that uses your DB */
-        const user = {
-            username,
-            password
-        }
-
+        const user = { username, password }
         return done(null, user, { message: 'User logged in.' });
     }
 ));
 
-app.use(router);
-
 passport.serializeUser((user, done) => {
     /* You can add your own custom code here */
-    done(null, user.id);
+    done(null, user);
 });
 
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (user, done) => {
     /* You can add your own custom code here */
-    done(null, id);
+    done(null, user);
 });
+
+app.use(router);
 
 app.all('/*', (req, res) => {
     return res.json({ message: "Welcome to my Node API." });
