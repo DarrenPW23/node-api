@@ -1,20 +1,13 @@
 const express = require('express');
 const path = require('path');
-const session = require('express-session');
 
 require('cors');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
-const SESSION_KEY = process.env.SESSION_KEY || 'your-secret-key';
 
 const app = express();
 
-app.use(session({
-    secret: SESSION_KEY,
-    resave: false,
-    saveUninitialized: false
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './public'))); // public folder

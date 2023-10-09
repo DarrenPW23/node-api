@@ -1,3 +1,4 @@
+const { isEmail } = require('lodash');
 const { user, Sequelize } = require("./../models");
 const Op = Sequelize.Op;
 
@@ -39,7 +40,7 @@ self.getAll = async (req, res) => {
 self.createUser = async (req, res) => {
     const { firstName, lastName, email, username, password } = req.body;
 
-    if (!firstName || !lastName || !password || !email) {
+    if (!firstName || !lastName || !isEmail(email) || !username || !password) {
         return res.status(400).send({
             success: false,
             message: "Content can not be empty!"
